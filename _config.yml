@@ -1,0 +1,4 @@
+deploy:
+  type: git
+  repository: git@github.com:58520757/58520757.github.io.git
+  branch: master
