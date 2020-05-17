@@ -13,6 +13,7 @@
         html,
         body {
             height: 100%;
+            background: #000000;
         }
 
         html {
@@ -30,6 +31,7 @@
             -webkit-transform: translate(-50%, 0);
             transform: translate(-50%, 0);
         }
+
         .letter {
             display: inline-block;
             top: 0;
@@ -37,66 +39,82 @@
             font-size: 4vmin;
             text-shadow: 0 0 .25em red, 0 0 .35em red, 0 0 .45em transparent, 0 0 .55em transparent, 0 0 .65em transparent;
         }
+
         .letter:nth-child(1) {
             -webkit-animation: twinkle 2.7s infinite 0.9s;
             animation: twinkle 2.7s infinite 0.9s;
         }
+
         .letter:nth-child(2) {
             -webkit-animation: twinkle 2.7s infinite 2.1s;
             animation: twinkle 2.7s infinite 2.1s;
         }
+
         .letter:nth-child(3) {
             -webkit-animation: twinkle 2.7s infinite 2.7s;
             animation: twinkle 2.7s infinite 2.7s;
         }
+
         .letter:nth-child(4) {
             -webkit-animation: twinkle 2.7s infinite 1.2s;
             animation: twinkle 2.7s infinite 1.2s;
         }
+
         .letter:nth-child(5) {
             -webkit-animation: twinkle 2.7s infinite 1.8s;
             animation: twinkle 2.7s infinite 1.8s;
         }
+
         .letter:nth-child(6) {
             -webkit-animation: twinkle 2.7s infinite 2.25s;
             animation: twinkle 2.7s infinite 2.25s;
         }
+
         .letter:nth-child(7) {
             -webkit-animation: twinkle 2.7s infinite 1.8s;
             animation: twinkle 2.7s infinite 1.8s;
         }
+
         .letter:nth-child(8) {
             -webkit-animation: twinkle 2.7s infinite 2.1s;
             animation: twinkle 2.7s infinite 2.1s;
         }
+
         .letter:nth-child(9) {
             -webkit-animation: twinkle 2.7s infinite 0.6s;
             animation: twinkle 2.7s infinite 0.6s;
         }
+
         .letter:nth-child(10) {
             -webkit-animation: twinkle 2.7s infinite 0.3s;
             animation: twinkle 2.7s infinite 0.3s;
         }
+
         .letter:nth-child(11) {
             -webkit-animation: twinkle 2.7s infinite 1.5s;
             animation: twinkle 2.7s infinite 1.5s;
         }
+
         .letter:nth-child(12) {
             -webkit-animation: twinkle 2.7s infinite 1.35s;
             animation: twinkle 2.7s infinite 1.35s;
         }
+
         .letter:nth-child(13) {
             -webkit-animation: twinkle 2.7s infinite 0.75s;
             animation: twinkle 2.7s infinite 0.75s;
         }
+
         .letter:nth-child(14) {
             -webkit-animation: twinkle 2.7s infinite 2.7s;
             animation: twinkle 2.7s infinite 2.7s;
         }
+
         .letter:nth-child(15) {
             -webkit-animation: twinkle 2.7s infinite 0.6s;
             animation: twinkle 2.7s infinite 0.6s;
         }
+
         .letter:nth-child(16) {
             -webkit-animation: twinkle 2.7s infinite 0.6s;
             animation: twinkle 2.7s infinite 0.6s;
@@ -105,7 +123,11 @@
 </head>
 <body>
 <link href="https://fonts.proxy.ustclug.org/css?family=Petit+Formal+Script" rel="stylesheet">
-<div class="love"><span class="letter">I</span><span class="letter">&nbsp;</span><span class="letter">L</span><span
+<embed border="0"
+       marginwidth="0" marginheight="0"
+       width="250" height="52"
+src="https://link.hhtjim.com/163/2061452.mp3">
+<div class="love" id="love"><span class="letter">I</span><span class="letter">&nbsp;</span><span class="letter">L</span><span
         class="letter">o</span><span class="letter">v</span><span class="letter">e</span><span
         class="letter">&nbsp;</span><span class="letter">Y</span><span class="letter">o</span><span
         class="letter">u</span><span class="letter">&nbsp;</span><span class="letter">Y</span><span
@@ -117,6 +139,9 @@
 <script src="js/Sparks.js"></script>
 <script src="js/helvetiker_regular.typeface.js"></script>
 <script>
+    document.getElementById("love").addEventListener('mousedown', function () {
+        window.location.href = "./"
+    }, false);
 
     var container;
 
@@ -130,8 +155,8 @@
     var mouseX = 0;
     var mouseXOnMouseDown = 0;
 
-    var windowHalfX = window.innerWidth / 2;
-    var windowHalfY = window.innerHeight / 2;
+    var windowHalfX = getViewPortWidth() / 2;
+    var windowHalfY = getViewPortHeight() / 2;
 
     var heartShape, particleCloud, sparksEmitter, emitterPos;
     var _rotation = 0;
@@ -140,6 +165,16 @@
     init();
     animate();
 
+    // 获取浏览器窗口的可视区域的宽度
+    function getViewPortWidth() {
+        return document.documentElement.clientWidth || document.body.clientWidth;
+    }
+
+    // 获取浏览器窗口的可视区域的高度
+    function getViewPortHeight() {
+        return document.documentElement.clientHeight || document.body.clientHeight;
+    }
+
     function init() {
 
         container = document.createElement('div');
@@ -147,7 +182,7 @@
 
 
         //相机
-        camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 1, 1000);
+        camera = new THREE.PerspectiveCamera(50, getViewPortWidth() / getViewPortHeight(), 1, 1000);
         camera.position.set(0, 150, 800);
 
         //场景
@@ -223,7 +258,6 @@
             var x = 0, y = 0;
             context.scale(0.05, -0.05); // Scale so canvas render can redraw within bounds
             context.beginPath();
-            // From http://blog.burlock.org/html5/130-paths
             context.bezierCurveTo(x + 2.5, y + 2.5, x + 2.0, y, x, y);
             context.bezierCurveTo(x - 3.0, y, x - 3.0, y + 3.5, x - 3.0, y + 3.5);
             context.bezierCurveTo(x - 3.0, y + 5.5, x - 1.0, y + 7.7, x + 2.5, y + 9.5);
@@ -302,7 +336,7 @@
         renderer = new THREE.CanvasRenderer();
         renderer.setClearColor(0x000000);
         renderer.setPixelRatio(window.devicePixelRatio);
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(getViewPortWidth(), getViewPortHeight());
         container.appendChild(renderer.domElement);
 
         document.addEventListener('mousedown', onDocumentMouseDown, false);
@@ -317,13 +351,13 @@
 
     function onWindowResize() {
 
-        windowHalfX = window.innerWidth / 2;
-        windowHalfY = window.innerHeight / 2;
+        windowHalfX = getViewPortWidth() / 2;
+        windowHalfY = getViewPortHeight() / 2;
 
-        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.aspect = getViewPortWidth() / getViewPortHeight();
         camera.updateProjectionMatrix();
 
-        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setSize(getViewPortWidth(), getViewPortHeight());
 
     }
 
@@ -335,18 +369,18 @@
 
         event.preventDefault();
 
-        // mouseXOnMouseDown = event.clientX - windowHalfX;
-        // targetRotationOnMouseDown = targetRotation;
-        //
-        // if (sparksEmitter.isRunning()) {
-        //
-        //     sparksEmitter.stop();
-        //
-        // } else {
-        //
-        //     sparksEmitter.start();
-        //
-        // }
+        mouseXOnMouseDown = event.clientX - windowHalfX;
+        targetRotationOnMouseDown = targetRotation;
+
+        if (sparksEmitter.isRunning()) {
+
+            sparksEmitter.stop();
+
+        } else {
+
+            sparksEmitter.start();
+
+        }
 
     }
 
