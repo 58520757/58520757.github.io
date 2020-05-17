@@ -14,7 +14,10 @@
         html,
         body {
             height: 100%;
-            background: #F19483;
+            background: #000000;
+            transform: scale(0.8, 0.8);
+            -webkit-transform: scale(0.8, 0.8); /*兼容-webkit-引擎浏览器*/
+            -moz-transform: scale(0.8, 0.8);
         }
 
         html {
@@ -26,7 +29,7 @@
         .love {
             position: absolute;
             margin-bottom: 6em;
-            padding-top: 4em;
+            padding-top: 2em;
             text-align: center;
             left: 50%;
             -webkit-transform: translate(-50%, 0);
@@ -37,7 +40,7 @@
             display: inline-block;
             top: 0;
             left: 0;
-            font-size: 4vmin;
+            font-size: 6vmin;
             text-shadow: 0 0 .25em red, 0 0 .35em red, 0 0 .45em transparent, 0 0 .55em transparent, 0 0 .65em transparent;
         }
 
@@ -336,7 +339,7 @@
 
 
         renderer = new THREE.CanvasRenderer();
-        renderer.setClearColor(0xF19483);
+        renderer.setClearColor(0x000000);
         renderer.setPixelRatio(window.devicePixelRatio);
         renderer.setSize(getViewPortWidth(), getViewPortHeight());
         container.appendChild(renderer.domElement);
