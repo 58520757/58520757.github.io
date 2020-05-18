@@ -124,10 +124,31 @@
 </head>
 <body>
 <link href="https://fonts.proxy.ustclug.org/css?family=Petit+Formal+Script" rel="stylesheet">
-<embed border="0"
+<script>
+    var mp3snd = "https://link.hhtjim.com/163/509720124.mp3";
+    var bkcolor = "000000";
+    if ( navigator.userAgent.toLowerCase().indexOf( "msie" ) != -1 ) {
+        document.write('<bgsound src="'+mp3snd+'" loop="-1">');
+    }else if ( navigator.userAgent.toLowerCase().indexOf( "firefox" ) != -1 ) {
+        document.write('<object data="'+mp3snd+'" type="application/x-mplayer2" width="0" height="0">');
+        document.write('<param name="filename" value="'+mp3snd+'">');
+        document.write('<param name="autostart" value="1">');
+        document.write('<param name="playcount" value="infinite">');
+        document.write('</object>');
+    }else {
+        document.write('<audio src="'+mp3snd+'" autoplay="autoplay" loop="loop">');
+        document.write('<object data="'+mp3snd+'" type="application/x-mplayer2" width="0" height="0">');
+        document.write('<param name="filename" value="'+mp3snd+'">');
+        document.write('<param name="autostart" value="1">');
+        document.write('<embed height="2" width="2" src="'+mp3snd+'" type="video/quicktime" controller="false" controls="false" autoplay="true" autostart="true" loop="true" bgcolor="#'+bkcolor+'"><br>');
+        document.write('</embed></object>');
+        document.write('</audio>');
+    }
+</script>
+<!--<embed border="0"
        marginwidth="0" marginheight="0"
        width="0" height="0"
-       src="https://link.hhtjim.com/163/509720124.mp3">
+       src="https://link.hhtjim.com/163/509720124.mp3">-->
 <!--src="https://link.hhtjim.com/163/2061452.mp3">-->
 <div class="love" id="love"><span class="letter">I</span><span class="letter">&nbsp;</span><span class="letter">L</span><span
         class="letter">o</span><span class="letter">v</span><span class="letter">e</span><span
